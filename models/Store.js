@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const slug = require('slugs');
+const autoIncrement = require('mongoose-auto-increment');
 
 const storeSchema = new mongoose.Schema({
   name: {
@@ -34,7 +35,8 @@ const storeSchema = new mongoose.Schema({
   },
   photo: String,
   author: {
-    type: mongoose.Schema.ObjectId,
+    //type: mongoose.Schema.ObjectId,
+    type:Number,
     ref: 'User',
     required: 'You must supply an author'
   }
@@ -110,5 +112,7 @@ function autopopulate(next) {
 
 storeSchema.pre('find', autopopulate);
 storeSchema.pre('findOne', autopopulate);
+//autoIncrement.initialize(mongoose.connection);
+storeSchema.plugin(autoIncrement.plugin, 'Store');
 
 module.exports = mongoose.model('Store', storeSchema);

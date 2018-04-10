@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
+const autoIncrement = require('mongoose-auto-increment');
 
 const reviewSchema = new mongoose.Schema({
   created: {
@@ -7,12 +8,14 @@ const reviewSchema = new mongoose.Schema({
     default: Date.now
   },
   author: {
-    type: mongoose.Schema.ObjectId,
+    //type: mongoose.Schema.ObjectId,
+    type:Number,
     ref: 'User',
     required: 'You must supply an author!'
   },
   store: {
-    type: mongoose.Schema.ObjectId,
+    //type: mongoose.Schema.ObjectId,
+    type:Number,
     ref: 'Store',
     required: 'You must supply a store!'
   },
@@ -34,5 +37,7 @@ function autopopulate(next) {
 
 reviewSchema.pre('find', autopopulate);
 reviewSchema.pre('findOne', autopopulate);
+//autoIncrement.initialize(mongoose.connection);
+reviewSchema.plugin(autoIncrement.plugin, 'Review');
 
 module.exports = mongoose.model('Review', reviewSchema);
