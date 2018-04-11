@@ -3,6 +3,7 @@ html
   head
     title= `${title} | ${h.siteName}`
     link(rel='stylesheet', href='/dist/style.css')
+    link(rel='stylesheet', href='/dist/sidebar.css')
     link(rel="shortcut icon" type="image/png" href="/images/icons/doughnut.png")
     meta(name="viewport" content="width=device-width, initial-scale=1")
   body
@@ -50,6 +51,28 @@ html
     .content
       block content
         p This is the default!
+
+    .sidebar
+      h1 Challenges
+      .challenge
+        p Find a thingie
+        .content
+          p oseoseirmeoaa oif
+          p irsufnif i!!!! ofesi oewowowowoowowow afes a
+          p test 1234 oij ofa
+      .challenge
+        p Find a thingie
+        .content
+          p oseoseirmeoaa oif
+          p irsufnif i!!!! ofesi oewowowowoowowow afes a
+          p test 1234 oij ofa
+      .challenge
+        p Find a thingie
+        .content
+          p oseoseirmeoaa oif
+          p irsufnif i!!!! ofesi oewowowowoowowow afes a
+          p test 1234 oij ofa
+    script(src="/dist/sidebar.js")
 
     block scripts
       script(src=`https://maps.googleapis.com/maps/api/js?key=${process.env.MAP_KEY}&libraries=places`)
