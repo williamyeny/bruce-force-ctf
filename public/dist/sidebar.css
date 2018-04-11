@@ -33,7 +33,6 @@
 
 .challenge .content {
   display: none;
-  margin-top:10px;
 }
 
 .challenge .content p {
@@ -42,4 +41,8 @@
 
 .challenge .show {
   display: block;
+}
+
+.selected {
+  background-color:#eee;
 }
