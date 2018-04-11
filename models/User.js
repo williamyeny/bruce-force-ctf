@@ -5,6 +5,7 @@ const md5 = require('md5');
 const validator = require('validator');
 const mongodbErrorHandler = require('mongoose-mongodb-errors');
 const passportLocalMongoose = require('passport-local-mongoose');
+const autoIncrement = require('mongoose-auto-increment');
 
 const userSchema = new Schema({
   email: {
@@ -23,7 +24,9 @@ const userSchema = new Schema({
   resetPasswordToken: String,
   resetPasswordExpires: Date,
   hearts: [
-    { type: mongoose.Schema.ObjectId, ref: 'Store' }
+    { //type: mongoose.Schema.ObjectId,
+      type:Number,
+      ref: 'Store' }
   ]
 });
 
@@ -34,5 +37,7 @@ userSchema.virtual('gravatar').get(function() {
 
 userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
 userSchema.plugin(mongodbErrorHandler);
+
+userSchema.plugin(autoIncrement.plugin, 'User');
 
 module.exports = mongoose.model('User', userSchema);
