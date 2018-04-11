@@ -1111,10 +1111,6 @@ var _axios = __webpack_require__(2);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _dompurify = __webpack_require__(32);
-
-var _dompurify2 = _interopRequireDefault(_dompurify);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function searchResultsHTML(stores) {
@@ -1143,11 +1139,11 @@ function typeAhead(search) {
 
     _axios2.default.get('/api/search?q=' + this.value).then(function (res) {
       if (res.data.length) {
-        searchResults.innerHTML = _dompurify2.default.sanitize(searchResultsHTML(res.data));
+        searchResults.innerHTML = searchResultsHTML(res.data);
         return;
       }
       // tell them nothing came back
-      searchResults.innerHTML = _dompurify2.default.sanitize('<div class="search__result">No results for ' + _this.value + '</div>');
+      searchResults.innerHTML = '<div class="search__result">No results for ' + _this.value + '</div>';
     }).catch(function (err) {
       console.error(err);
     });
@@ -2001,33 +1997,28 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     } else if (typeof module !== 'undefined') {
         module.exports = factory(root);
     } else {
-        root.DOMPurify = factory(root);
+        // root.DOMPurify = factory(root);
     }
 })(function factory(window) {
     'use strict';
 
-    var DOMPurify = function DOMPurify(window) {
-        return factory(window);
-    };
+    // var DOMPurify = function DOMPurify(window) {
+    //     return factory(window);
+    // };
 
-    /**
-     * Version label, exposed for easier checks
-     * if DOMPurify is up to date or not
-     */
-    DOMPurify.version = '0.8.5';
 
-    /**
-     * Array of elements that DOMPurify removed during sanitation.
-     * Empty if nothing was removed.
-     */
-    DOMPurify.removed = [];
+    // /**
+    //  * Array of elements that DOMPurify removed during sanitation.
+    //  * Empty if nothing was removed.
+    //  */
+    // DOMPurify.removed = [];
 
-    if (!window || !window.document || window.document.nodeType !== 9) {
-        // not running in a browser, provide a factory function
-        // so that you can pass your own Window
-        DOMPurify.isSupported = false;
-        return DOMPurify;
-    }
+    // if (!window || !window.document || window.document.nodeType !== 9) {
+    //     // not running in a browser, provide a factory function
+    //     // so that you can pass your own Window
+    //     DOMPurify.isSupported = false;
+    //     return DOMPurify;
+    // }
 
     var document = window.document;
     var originalDocument = document;
@@ -2059,11 +2050,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     var importNode = originalDocument.importNode;
 
     var hooks = {};
-
-    /**
-     * Expose whether this browser supports running the full DOMPurify.
-     */
-    DOMPurify.isSupported = typeof implementation.createHTMLDocument !== 'undefined' && document.documentMode !== 9;
 
     /* Add properties to a lookup table */
     var _addToSet = function _addToSet(set, array) {
@@ -2147,7 +2133,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     /* Output should be safe for common template engines.
      * This means, DOMPurify removes data attributes, mustaches and ERB
      */
-    var SAFE_FOR_TEMPLATES = false;
+    var SAFE_FOR_TEMPLATES = true;
 
     /* Specify template detection regex for SAFE_FOR_TEMPLATES mode */
     var MUSTACHE_EXPR = /\{\{[\s\S]*|[\s\S]*\}\}/gm;
@@ -2264,14 +2250,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       *
       * @param  a DOM node
       */
-    var _forceRemove = function _forceRemove(node) {
-        DOMPurify.removed.push({ element: node });
-        try {
-            node.parentNode.removeChild(node);
-        } catch (e) {
-            node.outerHTML = '';
-        }
-    };
+    // var _forceRemove = function _forceRemove(node) {
+    //     DOMPurify.removed.push({ element: node });
+    //     try {
+    //         node.parentNode.removeChild(node);
+    //     } catch (e) {
+    //         node.outerHTML = '';
+    //     }
+    // };
 
     /**
       * _removeAttribute
@@ -2279,13 +2265,13 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       * @param  an Attribute name
       * @param  a DOM node
       */
-    var _removeAttribute = function _removeAttribute(name, node) {
-        DOMPurify.removed.push({
-            attribute: node.getAttributeNode(name),
-            from: node
-        });
-        node.removeAttribute(name);
-    };
+    // var _removeAttribute = function _removeAttribute(name, node) {
+    //     DOMPurify.removed.push({
+    //         attribute: node.getAttributeNode(name),
+    //         from: node
+    //     });
+    //     node.removeAttribute(name);
+    // };
 
     /**
       * _initDocument
@@ -2399,7 +2385,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
         /* Convert markup to cover jQuery behavior */
         if (SAFE_FOR_JQUERY && !currentNode.firstElementChild && (!currentNode.content || !currentNode.content.firstElementChild) && /</g.test(currentNode.textContent)) {
-            DOMPurify.removed.push({ element: currentNode.cloneNode() });
+            // DOMPurify.removed.push({ element: currentNode.cloneNode() });
             currentNode.innerHTML = currentNode.textContent.replace(/</g, '&lt;');
         }
 
@@ -2410,7 +2396,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             content = content.replace(MUSTACHE_EXPR, ' ');
             content = content.replace(ERB_EXPR, ' ');
             if (currentNode.textContent !== content) {
-                DOMPurify.removed.push({ element: currentNode.cloneNode() });
+                // DOMPurify.removed.push({ element: currentNode.cloneNode() });
                 currentNode.textContent = content;
             }
         }
@@ -2552,7 +2538,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             /* Handle invalid data-* attribute set by try-catching it */
             try {
                 currentNode.setAttribute(name, value);
-                DOMPurify.removed.pop();
+                // DOMPurify.removed.pop();
             } catch (e) {}
         }
 
@@ -2607,9 +2593,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             return;
         }
 
-        hooks[entryPoint].forEach(function (hook) {
-            hook.call(DOMPurify, currentNode, data, CONFIG);
-        });
+        // hooks[entryPoint].forEach(function (hook) {
+        //     hook.call(DOMPurify, currentNode, data, CONFIG);
+        // });
     };
 
     /**
@@ -2619,176 +2605,176 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
      * @param {String|Node} dirty string or DOM node
      * @param {Object} configuration object
      */
-    DOMPurify.sanitize = function (dirty, cfg) {
-        var body, importedNode, currentNode, oldNode, nodeIterator, returnNode;
-        /* Make sure we have a string to sanitize.
-           DO NOT return early, as this will return the wrong type if
-           the user has requested a DOM object rather than a string */
-        if (!dirty) {
-            dirty = '<!-->';
-        }
+    // DOMPurify.sanitize = function (dirty, cfg) {
+    //     var body, importedNode, currentNode, oldNode, nodeIterator, returnNode;
+    //     /* Make sure we have a string to sanitize.
+    //        DO NOT return early, as this will return the wrong type if
+    //        the user has requested a DOM object rather than a string */
+    //     if (!dirty) {
+    //         dirty = '<!-->';
+    //     }
+    //
+    //     /* Stringify, in case dirty is an object */
+    //     if (typeof dirty !== 'string' && !_isNode(dirty)) {
+    //         if (typeof dirty.toString !== 'function') {
+    //             throw new TypeError('toString is not a function');
+    //         } else {
+    //             dirty = dirty.toString();
+    //         }
+    //     }
+    //
+    //     /* Check we can run. Otherwise fall back or ignore */
+    //     if (!DOMPurify.isSupported) {
+    //         if (_typeof(window.toStaticHTML) === 'object' || typeof window.toStaticHTML === 'function') {
+    //             if (typeof dirty === 'string') {
+    //                 return window.toStaticHTML(dirty);
+    //             } else if (_isNode(dirty)) {
+    //                 return window.toStaticHTML(dirty.outerHTML);
+    //             }
+    //         }
+    //         return dirty;
+    //     }
+    //
+    //     /* Assign config vars */
+    //     _parseConfig(cfg);
+    //
+    //     /* Clean up removed elements */
+    //     DOMPurify.removed = [];
+    //
+    //     if (dirty instanceof Node) {
+    //         /* If dirty is a DOM element, append to an empty document to avoid
+    //            elements being stripped by the parser */
+    //         body = _initDocument('<!-->');
+    //         importedNode = body.ownerDocument.importNode(dirty, true);
+    //         if (importedNode.nodeType === 1 && importedNode.nodeName === 'BODY') {
+    //             /* Node is already a body, use as is */
+    //             body = importedNode;
+    //         } else {
+    //             body.appendChild(importedNode);
+    //         }
+    //     } else {
+    //         /* Exit directly if we have nothing to do */
+    //         if (!RETURN_DOM && !WHOLE_DOCUMENT && dirty.indexOf('<') === -1) {
+    //             return dirty;
+    //         }
+    //
+    //         /* Initialize the document to work on */
+    //         body = _initDocument(dirty);
+    //
+    //         /* Check we have a DOM node from the data */
+    //         if (!body) {
+    //             return RETURN_DOM ? null : '';
+    //         }
+    //     }
+    //
+    //     /* Get node iterator */
+    //     nodeIterator = _createIterator(body);
+    //
+    //     /* Now start iterating over the created document */
+    //     while (currentNode = nodeIterator.nextNode()) {
+    //
+    //         /* Fix IE's strange behavior with manipulated textNodes #89 */
+    //         if (currentNode.nodeType === 3 && currentNode === oldNode) {
+    //             continue;
+    //         }
+    //
+    //         /* Sanitize tags and elements */
+    //         if (_sanitizeElements(currentNode)) {
+    //             continue;
+    //         }
+    //
+    //         /* Shadow DOM detected, sanitize it */
+    //         if (currentNode.content instanceof DocumentFragment) {
+    //             _sanitizeShadowDOM(currentNode.content);
+    //         }
+    //
+    //         /* Check attributes, sanitize if necessary */
+    //         _sanitizeAttributes(currentNode);
+    //
+    //         oldNode = currentNode;
+    //     }
+    //
+    //     /* Return sanitized string or DOM */
+    //     if (RETURN_DOM) {
+    //
+    //         if (RETURN_DOM_FRAGMENT) {
+    //             returnNode = createDocumentFragment.call(body.ownerDocument);
+    //
+    //             while (body.firstChild) {
+    //                 returnNode.appendChild(body.firstChild);
+    //             }
+    //         } else {
+    //             returnNode = body;
+    //         }
+    //
+    //         if (RETURN_DOM_IMPORT) {
+    //             /* adoptNode() is not used because internal state is not reset
+    //                (e.g. the past names map of a HTMLFormElement), this is safe
+    //                in theory but we would rather not risk another attack vector.
+    //                The state that is cloned by importNode() is explicitly defined
+    //                by the specs. */
+    //             returnNode = importNode.call(originalDocument, returnNode, true);
+    //         }
+    //
+    //         return returnNode;
+    //     }
+    //
+    //     return WHOLE_DOCUMENT ? body.outerHTML : body.innerHTML;
+    // };
 
-        /* Stringify, in case dirty is an object */
-        if (typeof dirty !== 'string' && !_isNode(dirty)) {
-            if (typeof dirty.toString !== 'function') {
-                throw new TypeError('toString is not a function');
-            } else {
-                dirty = dirty.toString();
-            }
-        }
+    // /**
+    //  * addHook
+    //  * Public method to add DOMPurify hooks
+    //  *
+    //  * @param {String} entryPoint
+    //  * @param {Function} hookFunction
+    //  */
+    // DOMPurify.addHook = function (entryPoint, hookFunction) {
+    //     if (typeof hookFunction !== 'function') {
+    //         return;
+    //     }
+    //     hooks[entryPoint] = hooks[entryPoint] || [];
+    //     hooks[entryPoint].push(hookFunction);
+    // };
 
-        /* Check we can run. Otherwise fall back or ignore */
-        if (!DOMPurify.isSupported) {
-            if (_typeof(window.toStaticHTML) === 'object' || typeof window.toStaticHTML === 'function') {
-                if (typeof dirty === 'string') {
-                    return window.toStaticHTML(dirty);
-                } else if (_isNode(dirty)) {
-                    return window.toStaticHTML(dirty.outerHTML);
-                }
-            }
-            return dirty;
-        }
+    // /**
+    //  * removeHook
+    //  * Public method to remove a DOMPurify hook at a given entryPoint
+    //  * (pops it from the stack of hooks if more are present)
+    //  *
+    //  * @param {String} entryPoint
+    //  * @return void
+    //  */
+    // DOMPurify.removeHook = function (entryPoint) {
+    //     if (hooks[entryPoint]) {
+    //         hooks[entryPoint].pop();
+    //     }
+    // };
 
-        /* Assign config vars */
-        _parseConfig(cfg);
+    // /**
+    //  * removeHooks
+    //  * Public method to remove all DOMPurify hooks at a given entryPoint
+    //  *
+    //  * @param  {String} entryPoint
+    //  * @return void
+    //  */
+    // DOMPurify.removeHooks = function (entryPoint) {
+    //     if (hooks[entryPoint]) {
+    //         hooks[entryPoint] = [];
+    //     }
+    // };
 
-        /* Clean up removed elements */
-        DOMPurify.removed = [];
-
-        if (dirty instanceof Node) {
-            /* If dirty is a DOM element, append to an empty document to avoid
-               elements being stripped by the parser */
-            body = _initDocument('<!-->');
-            importedNode = body.ownerDocument.importNode(dirty, true);
-            if (importedNode.nodeType === 1 && importedNode.nodeName === 'BODY') {
-                /* Node is already a body, use as is */
-                body = importedNode;
-            } else {
-                body.appendChild(importedNode);
-            }
-        } else {
-            /* Exit directly if we have nothing to do */
-            if (!RETURN_DOM && !WHOLE_DOCUMENT && dirty.indexOf('<') === -1) {
-                return dirty;
-            }
-
-            /* Initialize the document to work on */
-            body = _initDocument(dirty);
-
-            /* Check we have a DOM node from the data */
-            if (!body) {
-                return RETURN_DOM ? null : '';
-            }
-        }
-
-        /* Get node iterator */
-        nodeIterator = _createIterator(body);
-
-        /* Now start iterating over the created document */
-        while (currentNode = nodeIterator.nextNode()) {
-
-            /* Fix IE's strange behavior with manipulated textNodes #89 */
-            if (currentNode.nodeType === 3 && currentNode === oldNode) {
-                continue;
-            }
-
-            /* Sanitize tags and elements */
-            if (_sanitizeElements(currentNode)) {
-                continue;
-            }
-
-            /* Shadow DOM detected, sanitize it */
-            if (currentNode.content instanceof DocumentFragment) {
-                _sanitizeShadowDOM(currentNode.content);
-            }
-
-            /* Check attributes, sanitize if necessary */
-            _sanitizeAttributes(currentNode);
-
-            oldNode = currentNode;
-        }
-
-        /* Return sanitized string or DOM */
-        if (RETURN_DOM) {
-
-            if (RETURN_DOM_FRAGMENT) {
-                returnNode = createDocumentFragment.call(body.ownerDocument);
-
-                while (body.firstChild) {
-                    returnNode.appendChild(body.firstChild);
-                }
-            } else {
-                returnNode = body;
-            }
-
-            if (RETURN_DOM_IMPORT) {
-                /* adoptNode() is not used because internal state is not reset
-                   (e.g. the past names map of a HTMLFormElement), this is safe
-                   in theory but we would rather not risk another attack vector.
-                   The state that is cloned by importNode() is explicitly defined
-                   by the specs. */
-                returnNode = importNode.call(originalDocument, returnNode, true);
-            }
-
-            return returnNode;
-        }
-
-        return WHOLE_DOCUMENT ? body.outerHTML : body.innerHTML;
-    };
-
-    /**
-     * addHook
-     * Public method to add DOMPurify hooks
-     *
-     * @param {String} entryPoint
-     * @param {Function} hookFunction
-     */
-    DOMPurify.addHook = function (entryPoint, hookFunction) {
-        if (typeof hookFunction !== 'function') {
-            return;
-        }
-        hooks[entryPoint] = hooks[entryPoint] || [];
-        hooks[entryPoint].push(hookFunction);
-    };
-
-    /**
-     * removeHook
-     * Public method to remove a DOMPurify hook at a given entryPoint
-     * (pops it from the stack of hooks if more are present)
-     *
-     * @param {String} entryPoint
-     * @return void
-     */
-    DOMPurify.removeHook = function (entryPoint) {
-        if (hooks[entryPoint]) {
-            hooks[entryPoint].pop();
-        }
-    };
-
-    /**
-     * removeHooks
-     * Public method to remove all DOMPurify hooks at a given entryPoint
-     *
-     * @param  {String} entryPoint
-     * @return void
-     */
-    DOMPurify.removeHooks = function (entryPoint) {
-        if (hooks[entryPoint]) {
-            hooks[entryPoint] = [];
-        }
-    };
-
-    /**
-     * removeAllHooks
-     * Public method to remove all DOMPurify hooks
-     *
-     * @return void
-     */
-    DOMPurify.removeAllHooks = function () {
-        hooks = {};
-    };
-
-    return DOMPurify;
+    // /**
+    //  * removeAllHooks
+    //  * Public method to remove all DOMPurify hooks
+    //  *
+    //  * @return void
+    //  */
+    // DOMPurify.removeAllHooks = function () {
+    //     hooks = {};
+    // };
+    //
+    // return DOMPurify;
 });
 
 /***/ }),
