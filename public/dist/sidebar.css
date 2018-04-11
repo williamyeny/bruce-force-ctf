@@ -43,6 +43,32 @@
   display: block;
 }
 
+.sidebar .hide {
+  display:none;
+}
+
 .selected {
   background-color:#eee;
+}
+
+.showhide {
+  margin:0;
+  font-size: 12px;
+  position: absolute;
+  right:0;
+  top:0;
+  width:40px;
+  height:40px;
+  text-align: center;
+  line-height: 40px;
+  cursor:pointer;
+  
+}
+
+.showhide:hover {
+  background-color:#eee;
+}
+
+.sidebar-hide {
+  left: -260px;
 }
