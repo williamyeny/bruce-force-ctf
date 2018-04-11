@@ -13,6 +13,7 @@ mongoose.connection.on('error', (err) => {
 });
 
 autoIncrement.initialize(mongoose.connection);
+
 // READY?! Let's go!
 
 // import all of our models

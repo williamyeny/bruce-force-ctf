@@ -30,6 +30,9 @@ const reviewSchema = new mongoose.Schema({
   }
 });
 
+
+reviewSchema.plugin(autoIncrement.plugin, 'Review');
+
 function autopopulate(next) {
   this.populate('author');
   next();
@@ -38,6 +41,5 @@ function autopopulate(next) {
 reviewSchema.pre('find', autopopulate);
 reviewSchema.pre('findOne', autopopulate);
 //autoIncrement.initialize(mongoose.connection);
-reviewSchema.plugin(autoIncrement.plugin, 'Review');
 
 module.exports = mongoose.model('Review', reviewSchema);

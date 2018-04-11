@@ -1,10 +1,98 @@
 [
-{
+  {
 "_id": 0,
 "author": 0,
 "store": 0,
 "text": "I tried this place last week and it was incredible! Amazing selection of local and imported brews and the food is to die for! ",
 "rating": 5,
 "created": "2017-03-08T17:09:21.627Z"
+  },
+{
+"_id": 1,
+"author": 2,
+"store": 1,
+"text": " Amazing!",
+"rating": 5,
+"created": "2017-03-08T17:09:21.627Z"
+},
+{
+"_id": 2,
+"author": 2,
+"store": 2,
+"text": "hipsters everywhere",
+"rating": 1,
+"created": "2017-03-08T17:10:10.426Z"
+},
+{
+"_id": 3,
+"author": 2,
+"store": 3,
+"text": "Always a great spot to grab a coffee with a friend. ",
+"rating": 5,
+"created": "2017-03-08T22:36:48.575Z"
+},
+{
+"_id": 4,
+"author":0,
+"store": 4,
+"text": "Great ramen, a little pricey for what you get. ",
+"rating": 3,
+"created": "2017-03-08T22:37:10.483Z"
+},
+{
+"_id": 5,
+"author": 2,
+"store": 5,
+"text": "Tried this place with my wife last week and it was incredible. ",
+"rating": 4,
+"created": "2017-03-08T22:37:32.829Z"
+},
+{
+"_id": 6,
+"author": 1,
+"store": 6,
+"text": "Pretty good soups. ",
+"rating": 3,
+"created": "2017-03-08T22:37:45.917Z"
+},
+{
+"_id": 7,
+"author": 2,
+"store": 3,
+"text": "If you need a great place with bangin' food that is open late, look no further than work.  ",
+"rating": 5,
+"created": "2017-03-08T22:38:22.858Z"
+},
+{
+"_id": 8,
+"author": 2,
+"store": 1,
+"text": "$12 Banana smoothies. I'd skip this one next time. ",
+"rating": 1,
+"created": "2017-03-08T22:38:44.128Z"
+},
+{
+"_id": 9,
+"author": 1,
+"store": 5,
+"text": "bok bok bok",
+"rating": 5,
+"created": "2017-03-08T22:39:07.295Z"
+},
+{
+"_id": 10,
+"author": 1,
+"store":7,
+"text": "Great spot for Brunch",
+"rating": 5,
+"created": "2017-03-08T22:39:29.383Z"
+},
+{
+"_id": 11,
+"author": 1,
+"store": 6,
+"text": "I only wish I could find them before they were all sold out! ",
+"rating": 3,
+"created": "2017-03-08T22:39:46.011Z"
 }
 ]
