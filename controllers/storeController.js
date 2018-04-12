@@ -17,6 +17,10 @@ const multerOptions = {
   }
 };
 
+exports.introPage = (req, res) =>{
+  res.render('intro');
+}
+
 exports.homePage = (req, res) => {
   res.render('index');
 };
