@@ -1,7 +1,7 @@
-var cTitle = document.getElementsByClassName("challenge-title");
+var cTitles = document.getElementsByClassName("challenge-title");
 
-for (i = 0; i < cTitle.length; i++) {
-  cTitle[i].addEventListener("click", function () {
+for (i = 0; i < cTitles.length; i++) {
+  cTitles[i].addEventListener("click", function () {
     this.nextSibling.classList.toggle("show");
     this.classList.toggle("selected");
   });
@@ -23,3 +23,12 @@ document.getElementsByClassName("showhide")[0].addEventListener("click", functio
     document.getElementsByClassName("showhide")[0].innerHTML = "hide";
   }
 })
+
+var cAnswers = document.getElementsByClassName("answer-button");
+for (i = 0; i < cAnswers.length; i++) {
+  cAnswers[i].addEventListener("click", function() {
+    if (this.previousSibling.value == this.parentElement.parentElement.getAttribute("data-answer")) {
+      alert("ay!");
+    }
+  })
+}
