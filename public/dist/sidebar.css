@@ -1,5 +1,5 @@
 .sidebar {
-  width:300px;
+  width:500px;
   position:fixed;
   top:10px;
   left:10px;
@@ -12,8 +12,12 @@
   font-family: Helvetica, Arial, sans-serif;
   margin:10px 10px;
   font-size: 18px;
-  letter-spacing: 0px;
-}
+  letter-spacing: 0px;}
+  .sidebar span{
+    font-family: Arial;
+    margin: 10px 10px;
+    font-size:10px;
+  }
 
 
 .challenge {
@@ -24,7 +28,7 @@
   font-size: 16px;
   line-height: normal;
   padding: 10px;
-  margin:0; 
+  margin:0;
   cursor: pointer;
 }
 
@@ -63,7 +67,7 @@
   text-align: center;
   line-height: 40px;
   cursor:pointer;
-  
+
 }
 
 .showhide:hover {
@@ -71,7 +75,7 @@
 }
 
 .sidebar-hide {
-  left: -260px;
+  left: -460px;
 }
 
 .challenge input {
