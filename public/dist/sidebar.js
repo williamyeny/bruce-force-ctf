@@ -1,6 +1,11 @@
 var completedRaw = localStorage.getItem("bfctfCompleted");
 var completed = [];
 var challenges = document.getElementsByClassName("challenge");
+var countDownDate = localStorage.getItem("timeRemain");
+
+if (localStorage.getItem("timeRemain") === null) {
+  var countDownDate = new Date().getTime() + 1000 * 60 * 60;
+}
 
 if (completedRaw != undefined) { // not first visit!
   completed = JSON.parse(completedRaw);
@@ -9,6 +14,32 @@ if (completedRaw != undefined) { // not first visit!
     challenges[completed[i]].firstChild.innerHTML += " ✓";
   }
 }
+
+var x = setInterval(function() {
+  localStorage.setItem("timeRemain", countDownDate);
+  // Get todays date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now an the count down date
+  var distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes and seconds
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Display the result in the element with id="demo"
+
+  document.getElementById("time").innerHTML =  minutes + ": " + seconds;
+
+
+  // If the count down is finished, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    alert("game over");
+    document.getElementById("time").innerHTML = "EXPIRED";
+  }
+}, 1000);
+
 
 var cTitles = document.getElementsByClassName("challenge-title");
 
