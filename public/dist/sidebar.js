@@ -15,7 +15,7 @@ document.getElementsByClassName("showhide")[0].addEventListener("click", functio
   for (i = 0; i < challenges.length; i++) {
     challenges[i].classList.toggle("hide");
   }
-  
+
   // toggle text
   if (document.getElementsByClassName("showhide")[0].innerHTML == "hide") {
     document.getElementsByClassName("showhide")[0].innerHTML = "show";
@@ -24,11 +24,15 @@ document.getElementsByClassName("showhide")[0].addEventListener("click", functio
   }
 })
 
+var cScore = 0;
+//map
+
 var cAnswers = document.getElementsByClassName("answer-button");
 for (i = 0; i < cAnswers.length; i++) {
   cAnswers[i].addEventListener("click", function() {
     if (this.previousSibling.value == this.parentElement.parentElement.getAttribute("data-answer")) {
-      alert("ay!");
+      cScore += 10; //todo: make it so that you can only enter an answer once //keep track of id in another data structure?
+      alert(cScore);
     }
   })
 }
