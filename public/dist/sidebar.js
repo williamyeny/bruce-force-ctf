@@ -36,8 +36,6 @@ document.getElementsByClassName("showhide")[0].addEventListener("click", functio
 })
 
 var cScore = 0;
-//map
-
 var cAnswers = document.getElementsByClassName("answer-button");
 for (i = 0; i < cAnswers.length; i++) {
   cAnswers[i].HTMLindex = i;
@@ -50,7 +48,8 @@ for (i = 0; i < cAnswers.length; i++) {
         completed.push(this.HTMLindex);
         console.log(completed);
         localStorage.setItem("bfctfCompleted", JSON.stringify(completed));
-        alert("Correct!");
+        cScore += 10;
+        alert(cScore);
         challenges[this.HTMLindex].firstChild.innerHTML += " ✓";
       } else {
         alert("That wasn't correct :(");
