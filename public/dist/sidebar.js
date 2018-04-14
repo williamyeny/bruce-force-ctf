@@ -41,14 +41,13 @@ for (i = 0; i < cAnswers.length; i++) {
   cAnswers[i].HTMLindex = i;
   cAnswers[i].addEventListener("click", function() {
     if (completed.indexOf(this.HTMLindex) > -1) {
-      alert("You've already answered this one!'");
+      alert("You've already answered this one!");
     } else {
       if (this.previousSibling.value == this.parentElement.parentElement.getAttribute("data-answer")) {
         completed.push(this.HTMLindex);
         console.log(completed);
         localStorage.setItem("bfctfCompleted", JSON.stringify(completed));
         cScore += 10;
-        alert(cScore);
         document.getElementById("scoreboard").innerHTML=cScore.toString();
         challenges[this.HTMLindex].firstChild.innerHTML += " ✓";
       } else {

@@ -56,32 +56,74 @@ html
       h1 Challenges
         span
         span Remaining Time:
-        span
+        span#time
         span Score:
         span#scoreboard
       p.showhide hide
-      .challenge(data-answer="answer!!!")
-        p.challenge-title Find a thingie
+      .challenge(data-answer="secure")
+        p.challenge-title Cracking a Password
         .content
           h1 Prompt
-          p oseoseirmeoaa oif
+          p Brute force login to John’s user account. His username is John and email is john@gmail.com. Enter the password you found below.
           h1 Hint
-          p irsufnif i!!!! ofesi oewowowowoowowow afes a
-          p test 1234 oij ofa
+          p Use a password finder tool like Jack the Ripper.
           input(type="text")
           a.answer-button Check Answer
-      .challenge
-        p.challenge-title Find a thingie
+      .challenge(data-answer="hintforquestion3lookataddstorepage")
+        p.challenge-title Decrypting Encryption
         .content
-          p oseoseirmeoaa oif
-          p irsufnif i!!!! ofesi oewowowowoowowow afes a
-          p test 1234 oij ofa
-      .challenge
-        p.challenge-title Find a thingie
+          h1 Prompt
+          p You capture a hint for question 3 over the network but it’s in encrypted form. Figure out what type of encryption it is in order to decrypt it! Enter the decrypted form into the box below. 9a4952a6c6382cb69a9f1e900f937d2b
+          h1 Hint
+          p Look into the commonly used encryption patterns!
+          input(type="text")
+          a.answer-button Check Answer
+      .challenge(data-answer="http://localhost:7777/add <body onload=alert(‘test1’)>")
+        p.challenge-title XSS Vulnerability
         .content
-          p oseoseirmeoaa oif
-          p irsufnif i!!!! ofesi oewowowowoowowow afes a
-          p test 1234 oij ofa
+          h1 Prompt
+          p Find the portion of the site that is vulnerable to XSS. Add an XSS attack to have a popup that says “hi”. In the solution box below, enter the URL of where you found the vulnerability (e.g. http://localhost:7777/<ENTER THIS>) followed by a space and your XSS query
+          h1 Hint
+          p Try out each tab
+          input(type="text")
+          a.answer-button Check Answer
+      .challenge(data-answer="adminpassword")
+        p.challenge-title Bad Developer Practices
+        .content
+          h1 Prompt
+          p Login to the admin’s account using a hint found on the site (may not be visible) but look around. Enter in the admin’s password.
+          h1 Hint
+          p This can be found through a mistake on the developer's part. Think of bad coding practices and how this might help.
+          input(type="text")
+          a.answer-button Check Answer
+      .challenge(data-answer="http://localhost:7777/store/maggss-shop")
+        p.challenge-title Find Magg's Shop First
+        .content
+          h1 Prompt
+          p Maggs’s shop is opening up soon but it has yet to be revealed on the site! Be one of the first ones to find out the location of it by finding the hidden page. Enter in the URL once you’ve found the store.
+          h1 Hint
+          p Don't use an apostrophe
+          input(type="text")
+          a.answer-button Check Answer
+      .challenge(data-answer="answer!!!")
+        p.challenge-title Find the API Key
+        .content
+          h1 Prompt
+          p API keys allow API providers to log developers using the API, limit the rate the API is requested, and authorize developers to use certain features. Thus, it is important for developers to keep their API keys secret so other people don’t steal the key and issue requests in the developer’s name. The pages for each restaurant uses Google Maps’ API. Can you find the API key exposed in the request?
+          h1 Hint
+          p Most browser’s developer tools have a network tab. What can you see if you open the tab and refresh the page?
+          p It’s common for the API key to be sent in the URL of the request. For example, Google Maps’ API request looks like this: “https://maps.googleapis.com/maps/api/js?[API-key-here!!]&...”
+          input(type="text")
+          a.answer-button Check Answer
+      .challenge(data-answer="answer!!!")
+        p.challenge-title Write a Review Using Bruce's Name
+        .content
+          h1 Prompt
+          p Write a review with Bruce’s name!
+          h1 Hint
+          p You don’t know any other user’s password, but this site doesn’t check whether the user is authenticated when receiving the POST request -- Find out the endpoint, and then use a tool like POSTMAN and hijack it! Enter the string you saw after you succeed:
+          input(type="text")
+          a.answer-button Check Answer
     script(src="/dist/sidebar.js")
 
     block scripts
