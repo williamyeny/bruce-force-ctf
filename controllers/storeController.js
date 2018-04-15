@@ -18,7 +18,12 @@ const multerOptions = {
 };
 
 exports.introPage = (req, res) =>{
+  //TODO: ALso need to clear out the local storage.
   res.render('intro');
+}
+
+exports.exitPage = (req, res) =>{
+  res.render('exit', {score: 'Here is the score'});
 }
 
 exports.homePage = (req, res) => {

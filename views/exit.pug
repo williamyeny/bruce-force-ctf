@@ -1,0 +1,8 @@
+extends CTF_layout
+
+block content
+  .inner
+    p Game Over!
+    p= score
+    form(action="/intro" method="GET")
+      input.buttonClass(type="submit" value="Play Again")

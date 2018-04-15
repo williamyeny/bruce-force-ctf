@@ -36,6 +36,7 @@ var x = setInterval(function() {
   if (distance < 0) {
     clearInterval(x);
     alert("game over");
+    var score = cScore
     document.getElementById("time").innerHTML = "EXPIRED";
   }
 }, 1000);

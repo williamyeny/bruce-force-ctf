@@ -8,6 +8,7 @@ const { catchErrors } = require('../handlers/errorHandlers');
 
 
 router.get('/intro', storeController.introPage);
+router.get('/exit', storeController.exitPage);
 
 router.get('/', catchErrors(storeController.getStores));
 router.get('/stores', catchErrors(storeController.getStores));
