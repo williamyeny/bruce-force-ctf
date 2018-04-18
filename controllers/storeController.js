@@ -23,7 +23,7 @@ exports.introPage = (req, res) =>{
 }
 
 exports.exitPage = (req, res) =>{
-  res.render('exit', {score: 'Here is the score'});
+  res.render('exit');
 }
 
 exports.homePage = (req, res) => {
