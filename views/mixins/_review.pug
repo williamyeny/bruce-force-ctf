@@ -9,5 +9,5 @@ mixin review(review)
     time.review__time(datetime=review.created)= h.moment(review.created).fromNow()
   .review__body
     if (review.author.name == 'Admin')
-      p= "Congratulations! You've hacked a review under admin's account. Here is the flag: "
+      p= "Congratulations! You've hacked a review under admin's account. Here is the flag: borrowedBrucesName "
     p= review.text
