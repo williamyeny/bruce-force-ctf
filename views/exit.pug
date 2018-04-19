@@ -3,6 +3,8 @@ extends CTF_layout
 block content
   .inner
     p Game Over!
-    p= score
+    span Here is your score!
+    span#scoreboard
     form(action="/intro" method="GET")
       input.buttonClass(type="submit" value="Play Again")
+      

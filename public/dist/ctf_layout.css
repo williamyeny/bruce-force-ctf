@@ -23,7 +23,10 @@ html {
   /* 3 */
   -webkit-text-size-adjust: 100%;
   /* 3 */ }
-  
+
+span {
+  margin:10px;
+}
 .buttonClass {
   color:pink;
 }

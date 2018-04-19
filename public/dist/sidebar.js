@@ -38,6 +38,7 @@ var x = setInterval(function() {
     alert("game over");
     var score = cScore
     document.getElementById("time").innerHTML = "EXPIRED";
+    window.location = "/exit";
   }
 }, 1000);
 
